@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 use Scaveit\Localizeit\Copy;
 use DateTime;
 
-class User extends Model implements CopyInterface
+class Key extends Model implements CopyInterface
 {
 
     protected $softDelete = true;

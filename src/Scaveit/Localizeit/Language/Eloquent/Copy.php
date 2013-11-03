@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
 use Scaveit\Localizeit\Copy;
 use DateTime;
 
-class User extends Model implements CopyInterface
+class Copy extends Model implements CopyInterface
 {
 
     protected $softDelete = true;
@@ -37,7 +37,7 @@ class User extends Model implements CopyInterface
      *
      * @var string
      */
-    protected $table = 'copy_default';
+    protected $table = 'localizeit_copy_default';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -74,7 +74,7 @@ class User extends Model implements CopyInterface
     public function __construct()
     {
         $this->setLang();
-        $this->table = 'copy_'.$this->lang;
+        $this->table = 'localizeit_copy_'.$this->lang;
         parent::__construct();
     }
 
@@ -84,10 +84,12 @@ class User extends Model implements CopyInterface
      */
     public function setLang($lang = null)
     {
+       // TODO: Have this look at tables Exist 
+            
         if($lang){
             $this->lang = $lang;
         }
-        $this->lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $this->lang = 'default'; //substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
     }
 
     /**

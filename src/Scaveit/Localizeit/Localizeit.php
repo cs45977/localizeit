@@ -1,4 +1,4 @@
-<?php namespace Scaveit\Localizeit;
+<?php namespace Scaveit\Localizeit\Copy;
 
 /**
     * File Name: localizeit.php
@@ -36,8 +36,89 @@ class Localizeit {
 	 */
 	protected $languageProvider;
     
+    use \Scaveit\Localizeit\Language\Eloquent\Copy;
+    use \Scaveit\Localizeit\Language\Eloquent\Key;
+    
     public function __construct(){
+        $this->copyProvider = new Copy;
+        $this->keyProvider = new Key;
     }        
+    
+    
+    /**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return Copy::getAllCopy();
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		//
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+    
     
 }
 ?>
