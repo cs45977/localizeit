@@ -51,7 +51,7 @@ interface LangKeyInterface {
      * @param string $copy
 	 * @return bool
 	 */
-	public function saveKey($key,$desc);
+	public function saveLangKey($key,$desc);
 
 	/**
 	 * Delete the Key.
@@ -59,7 +59,7 @@ interface LangKeyInterface {
      * @param int $keyId
 	 * @return bool
 	 */
-	public function deleteKey($keyId);
+	public function deleteLangKey($keyId);
     
     
     
