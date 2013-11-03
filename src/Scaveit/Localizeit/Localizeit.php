@@ -24,7 +24,8 @@
 
     
 
-use \Illuminate\Routing\Controllers\Controller;    
+use \Illuminate\Routing\Controllers\Controller;   
+use \Illuminate\Http\JsonResponse;
 
 
 class Localizeit extends Controller{
@@ -54,7 +55,7 @@ class Localizeit extends Controller{
 	 */
 	public function index()
 	{
-		return $this->copyProvider->getAllCopy();
+        return JsonResponse::create($this->copyProvider->getAllCopy()->toArray());
 	}
 
 	/**
@@ -80,12 +81,12 @@ class Localizeit extends Controller{
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  str  $langKey
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($langKey)
 	{
-		//
+		return JsonResponse::create($this->copyProvider->getCopy($langKey)->toArray());
 	}
 
 	/**
