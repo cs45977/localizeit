@@ -3,7 +3,7 @@ localizeit
 
 Language Localization API
 
-Instalation  TODO Flush Out
+Installation TODO Flush Out
 ===========
 
 Add to composer 
@@ -11,3 +11,5 @@ Add to composer
 run migration 
 
 add to app.config
+
+add route (to protect api)
