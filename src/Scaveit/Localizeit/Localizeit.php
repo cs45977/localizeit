@@ -1,4 +1,4 @@
-<?php namespace Scaveit\Localizeit\Copy;
+<?php namespace Scaveit\Localizeit;
 
 /**
     * File Name: localizeit.php
