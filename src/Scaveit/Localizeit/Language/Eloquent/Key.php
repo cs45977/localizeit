@@ -73,35 +73,24 @@ class Key extends Model implements LangKeyInterface
 
     public function __construct()
     {
-        $this->setLang();
-        $this->table = 'copy_'.$this->lang;
         parent::__construct();
     }
 
+   
+    
+    
     /**
-     * Setting the $this->lang var to set the correct tables
-     * @param type $lang
-     */
-    public function setLang($lang = null)
-    {
-        if($lang){
-            $this->lang = $lang;
-        }
-        $this->lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    }
-
-    /**
-     * Returns the Copy ID.
-     *
-     * @return mixed
+     * Returns the  Key Id.
+     * @param var id
+     * @return string
      */
     public function getId()
     {
-        $this->id;
+        return $this->id;
     }
 
     /**
-     * Returns the Copy Key.
+     * Returns the  Key by id.
      * @param var id
      * @return string
      */
@@ -120,17 +109,7 @@ class Key extends Model implements LangKeyInterface
         return $this->where('key', '=', $key)->desc;
     }
 
-    /**
-     * Returns the Copy Lang .
-     * for a given CopyId
-     * @param = $copyId
-     * @return string
-     */
-    public function getLang($copyId)
-    {
-        return $this->find($copyId)->lang;
-    }
-
+    
     /**
      * Returns  object of 
      * all pices of copy for a given 
@@ -138,9 +117,9 @@ class Key extends Model implements LangKeyInterface
      * @param string lang
      * @return lang object
      */
-    public function getAllCopy($lang)
+    public function getAllKeys()
     {
-        return $this->where('lang', '=', $lang);
+        return $this->all();
     }
 
     /**
@@ -151,7 +130,7 @@ class Key extends Model implements LangKeyInterface
      * @param string $copy
      * @return bool
      */
-    public function saveCopy($key, $lang, $copy)
+    public function saveKey($key, $lang, $copy)
     {
         if ($record = $this->where('key', '=', $key)->firstOrFail()) {
             $record->lang = $lang;
@@ -172,7 +151,7 @@ class Key extends Model implements LangKeyInterface
      * @param int $copyID
      * @return bool
      */
-    public function deleteCopy($copyId){
+    public function deleteKey($copyId){
         $this->find($copyId)->delete();
     }
 
