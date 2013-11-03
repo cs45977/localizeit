@@ -24,8 +24,10 @@
 
     
 
+use \Illuminate\Routing\Controllers\Controller;    
 
-class Localizeit extends BaseController{
+
+class Localizeit extends Controller{
     
     /**
 	 * The language provider, used for retrieving
@@ -52,7 +54,7 @@ class Localizeit extends BaseController{
 	 */
 	public function index()
 	{
-		return Copy::getAllCopy();
+		return $this->copyProvider->getAllCopy();
 	}
 
 	/**
