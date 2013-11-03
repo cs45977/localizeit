@@ -25,7 +25,7 @@
     
 
 
-class Localizeit {
+class Localizeit extends BaseController{
     
     /**
 	 * The language provider, used for retrieving

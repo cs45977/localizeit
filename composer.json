@@ -17,6 +17,7 @@
 		"illuminate/cookie": "~4",
 		"illuminate/database": "~4",
 		"illuminate/session": "~4",
+        "illuminate/routing": "~4",
 		"ircmaxell/password-compat": "1.0.*"
 	},
     "extra": {
