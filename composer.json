@@ -14,11 +14,7 @@
 	},
 	"require-dev": {
 		"mockery/mockery": "0.7.2",
-		"illuminate/cookie": "~4",
-		"illuminate/database": "~4",
-		"illuminate/session": "~4",
-        "illuminate/routing": "~4",
-		"ircmaxell/password-compat": "1.0.*"
+		"illuminate/support": "4.0.*"
 	},
     "extra": {
 		"component": "package",
