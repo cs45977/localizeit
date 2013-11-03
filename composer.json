@@ -1,0 +1,33 @@
+{
+    "name": "scaveit/localizeit",
+    "description": "Language Localization API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Serna",
+            "email": "cs45977@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"php": ">=5.4.0"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.7.2",
+		"illuminate/cookie": "~4",
+		"illuminate/database": "~4",
+		"illuminate/session": "~4",
+		"ircmaxell/password-compat": "1.0.*"
+	},
+    "extra": {
+		"component": "package",
+		"frameworks": ["Laravel 3", "Laravel 4", "CodeIgniter 3", "FuelPHP 1"],
+		"versions": {
+			"1": "1.0/master",
+			"2": "master"
+		},
+		"branch-alias": {
+			"dev-master": "0.1-dev"
+		}
+	}
+}
