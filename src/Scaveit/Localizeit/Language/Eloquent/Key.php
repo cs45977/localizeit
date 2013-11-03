@@ -105,7 +105,7 @@ class Key extends Model implements LangKeyInterface
      * @param var id
      * @return string
      */
-    public function getCopyKey($id)
+    public function getKey($id)
     {
         return $this->find($id)->key;
     }
@@ -115,9 +115,9 @@ class Key extends Model implements LangKeyInterface
      * @param string $key
      * @return string
      */
-    public function getCopy($key)
+    public function getDesc($key)
     {
-        return $this->where('key', '=', $key)->copy;
+        return $this->where('key', '=', $key)->desc;
     }
 
     /**
