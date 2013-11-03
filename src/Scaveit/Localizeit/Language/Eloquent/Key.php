@@ -24,10 +24,10 @@ namespace Scaveit\Localizeit\Language\Eloquent;
  * @link       http://Scaveit.com   
  */
 use Illuminate\Database\Eloquent\Model;
-use Scaveit\Localizeit\Key;
+use Scaveit\Localizeit\Language\KeyInterface;
 use DateTime;
 
-class Key extends Model implements CopyInterface
+class Key extends Model implements KeyInterface
 {
 
     protected $softDelete = true;
