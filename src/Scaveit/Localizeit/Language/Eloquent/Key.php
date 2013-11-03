@@ -24,7 +24,7 @@ namespace Scaveit\Localizeit\Language\Eloquent;
  * @link       http://Scaveit.com   
  */
 use Illuminate\Database\Eloquent\Model;
-use Scaveit\Localizeit\Copy;
+use Scaveit\Localizeit\Key;
 use DateTime;
 
 class Key extends Model implements CopyInterface
