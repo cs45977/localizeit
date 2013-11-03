@@ -23,7 +23,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MigrationScaveitLocalizeitInstallCopyDefault extends Migration {
+class MigrationCreateCopyDefaultInstall extends Migration {
 
 	/**
 	 * Run the migrations.

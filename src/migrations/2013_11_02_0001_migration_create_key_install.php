@@ -23,7 +23,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MigrationScaveitLocalizeitInstallKeys extends Migration {
+class MigrationCreateKeyInstall extends Migration {
 
 	/**
 	 * Run the migrations.
