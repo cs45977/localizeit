@@ -36,13 +36,13 @@ class Localizeit {
 	 */
 	protected $languageProvider;
     
-    use \Scaveit\Localizeit\Language\Eloquent\Copy;
-    use \Scaveit\Localizeit\Language\Eloquent\Key;
+     //use Scaveit\Localizeit\Language\Eloquent\Copy;
+    //use Scaveit\Localizeit\Language\Eloquent\Key;
     
     public function __construct(){
-        $this->copyProvider = new Copy;
-        $this->keyProvider = new Key;
-    }        
+        $this->copyProvider = new \Scaveit\Localizeit\Language\Eloquent\Copy;
+        $this->keyProvider = new \Scaveit\Localizeit\Language\Eloquent\Key;
+    }
     
     
     /**

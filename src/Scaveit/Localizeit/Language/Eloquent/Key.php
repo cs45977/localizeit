@@ -94,7 +94,7 @@ class Key extends Model implements LangKeyInterface
      * @param var id
      * @return string
      */
-    public function getKey($id)
+    public function getLangKey($id)
     {
         return $this->find($id)->key;
     }
