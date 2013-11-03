@@ -23,7 +23,7 @@
     */
 
 
-interface KeyInterface {
+interface LangKeyInterface {
 
 	/**
 	 * Returns the Copy ID.

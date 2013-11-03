@@ -23,7 +23,7 @@
     */
 
 
-interface CopyInterface {
+interface LangCopyInterface {
 
 	/**
 	 * Returns the Copy ID.
@@ -47,14 +47,7 @@ interface CopyInterface {
 	 */
 	public function getCopy($key);
 
-	/**
-	 * Returns the Copy Description.
-	 *
-     * @param string $key
-	 * @return string
-	 */
-	public function getDesc($key);
-
+	
 	/**
 	 * Returns the Copy Lang .
 	 * for a given CopyId
