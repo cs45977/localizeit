@@ -130,7 +130,7 @@ class Key extends Model implements LangKeyInterface
      * @param string $copy
      * @return bool
      */
-    public function saveKey($key, $lang, $copy)
+    public function saveLangKey($key, $lang, $copy)
     {
         if ($record = $this->where('key', '=', $key)->firstOrFail()) {
             $record->lang = $lang;
@@ -151,7 +151,7 @@ class Key extends Model implements LangKeyInterface
      * @param int $copyID
      * @return bool
      */
-    public function deleteKey($copyId){
+    public function deleteLangKey($copyId){
         $this->find($copyId)->delete();
     }
 
