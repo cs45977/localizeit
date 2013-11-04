@@ -28,6 +28,11 @@
 		}
 	},
     "autoload": {
+        "classmap":[
+         "src/Controllers",
+         "src/Models",
+         "src/Models/Eloquent"
+        ],
         "psr-0": {
             "Scaveit\\Localizeit": "src/"
         }

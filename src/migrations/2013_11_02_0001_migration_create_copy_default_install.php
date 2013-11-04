@@ -36,7 +36,8 @@ class MigrationCreateCopyDefaultInstall extends Migration {
 		{
 			$table->increments('id');
 			$table->string('key');
-            $table->text('copy');
+            $table->text('value');
+            $table->text('desc');
 			$table->timestamps();
             $table->softDeletes();
 

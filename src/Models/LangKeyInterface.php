@@ -1,4 +1,4 @@
-<?php namespace Scaveit\Localizeit\Language;
+<?php namespace Scaveit\Localizeit\Models;
 
 /**
     * File Name: KyInterface.php

@@ -1,6 +1,4 @@
-<?php
-
-namespace Scaveit\Localizeit\Language\Eloquent;
+<?php namespace Scaveit\Localizeit\Models\Eloquent;
 
 /**
  * File Name: Copy.php
@@ -24,10 +22,10 @@ namespace Scaveit\Localizeit\Language\Eloquent;
  * @link       http://Scaveit.com   
  */
 use Illuminate\Database\Eloquent\Model;
-use Scaveit\Localizeit\Language\LangKeyInterface;
+use Scaveit\Localizeit\Models\LangCopyInterface;
 use DateTime;
 
-class Key extends Model implements LangKeyInterface
+class Copy extends Model implements LangCopyInterface
 {
 
     protected $softDelete = true;
@@ -37,7 +35,7 @@ class Key extends Model implements LangKeyInterface
      *
      * @var string
      */
-    protected $table = 'copy_default';
+    protected $table = 'localizeit_copy_default';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -55,13 +53,7 @@ class Key extends Model implements LangKeyInterface
     protected $guarded = array(
     );
 
-    /**
-     * Attributes that should be hashed.
-     *
-     * @var array
-     */
-    protected $hashableAttributes = array(
-    );
+  
 
     /**
      * We are going to use diffent copy tables
@@ -73,43 +65,46 @@ class Key extends Model implements LangKeyInterface
 
     public function __construct()
     {
+        $this->setLang();
+        $this->table = 'localizeit_copy_'.$this->lang;
         parent::__construct();
     }
 
-   
-    
-    
     /**
-     * Returns the  Key Id.
-     * @param var id
-     * @return string
+     * Setting the $this->lang var to set the correct tables
+     * @param type $lang
+     */
+    public function setLang($lang = null)
+    {
+       // TODO: Have this look at tables Exist 
+            
+        if($lang){
+            $this->lang = $lang;
+        }
+        $this->lang = 'default'; //substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    }
+
+    /**
+     * Returns the Copy ID.
+     *
+     * @return mixed
      */
     public function getId()
     {
-        return $this->id;
+        $this->id;
     }
 
-    /**
-     * Returns the  Key by id.
-     * @param var id
-     * @return string
-     */
-    public function getLangKey($id)
+     /**
+	 * Returns the Copy Object By Key.
+	 * @param str $key
+	 * @return string
+	 */
+	public function getCopy($key)
     {
-        return $this->find($id)->key;
+        return $this->where('key', '=', $key)->get();
     }
 
-    /**
-     * Returns the Copy Value (text).
-     * @param string $key
-     * @return string
-     */
-    public function getDesc($key)
-    {
-        return $this->where('key', '=', $key)->desc;
-    }
 
-    
     /**
      * Returns  object of 
      * all pices of copy for a given 
@@ -117,9 +112,22 @@ class Key extends Model implements LangKeyInterface
      * @param string lang
      * @return lang object
      */
-    public function getAllKeys()
+    public function getAllCopy()
     {
         return $this->all();
+    }
+    
+    /**
+     * Returns  object of 
+     * all pices of copy 
+      * Prepared for file transfer (key:value)
+     * @param string lang
+     * @return lang object
+     */
+	public function getKeyValue()
+    {
+        
+        return $this->select(array('key', 'value','description'))->groupBy('key')->get();
     }
 
     /**
@@ -130,16 +138,14 @@ class Key extends Model implements LangKeyInterface
      * @param string $copy
      * @return bool
      */
-    public function saveLangKey($key, $copy)
+    public function saveCopy($key, $copy)
     {
         if ($record = $this->where('key', '=', $key)->firstOrFail()) {
-            $record->lang = $lang;
             $record->copy = $copy;
             return $copy->save();
         } else {
             return $this->create([
                         'key' => $key,
-                        'lang' => $lang,
                         'copy' => $copy,
             ]);
         }
@@ -151,7 +157,7 @@ class Key extends Model implements LangKeyInterface
      * @param int $copyID
      * @return bool
      */
-    public function deleteLangKey($keyId){
+    public function deleteCopy($copyId){
         $this->find($copyId)->delete();
     }
 

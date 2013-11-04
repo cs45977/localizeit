@@ -1,4 +1,4 @@
-<?php namespace Scaveit\Localizeit;
+<?php namespace Scaveit\Localizeit\Controllers;
 
 /**
     * File Name: localizeit.php
@@ -26,7 +26,8 @@
 
 use \Illuminate\Routing\Controllers\Controller;   
 use \Illuminate\Http\JsonResponse;
-
+Use Scaveit\Localizeit\Models\Eloquent\Copy;
+Use Scaveit\Localizeit\Models\Eloquent\Key;
 
 class Localizeit extends Controller{
     
@@ -43,8 +44,9 @@ class Localizeit extends Controller{
     //use Scaveit\Localizeit\Language\Eloquent\Key;
     
     public function __construct(){
-        $this->copyProvider = new \Scaveit\Localizeit\Language\Eloquent\Copy;
-        $this->keyProvider = new \Scaveit\Localizeit\Language\Eloquent\Key;
+                                    
+        $this->copyProvider = new Copy;
+        $this->keyProvider = new Key;
     }
     
     
@@ -55,8 +57,33 @@ class Localizeit extends Controller{
 	 */
 	public function index()
 	{
+        $return=[];
+        $raw = $this->copyProvider->getKeyValue()->toArray();
+        
+        
+        foreach($raw as $pair){
+           // $return[$pair['key']]=$pair['copy'];
+        }
+        return JsonResponse::create($raw);
+	}
+    
+    
+    
+    /**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function full()
+	{
         return JsonResponse::create($this->copyProvider->getAllCopy()->toArray());
 	}
+    
+    
+    
+    
+    
+    
 
 	/**
 	 * Show the form for creating a new resource.
@@ -84,9 +111,9 @@ class Localizeit extends Controller{
 	 * @param  str  $langKey
 	 * @return Response
 	 */
-	public function show($langKey)
+	public function show($key)
 	{
-		return JsonResponse::create($this->copyProvider->getCopy($langKey)->toArray());
+        return JsonResponse::create($this->copyProvider->getCopy($key)->toArray());
 	}
 
 	/**

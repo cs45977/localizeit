@@ -1,4 +1,4 @@
-<?php namespace Scaveit\Localizeit\Language;
+<?php namespace Scaveit\Localizeit\Models;
 
 /**
     * File Name: localizeit.php
@@ -34,37 +34,30 @@ interface LangCopyInterface {
     
     
     /**
-	 * Returns the Copy Key.
-	 * @param var id
-	 * @return string
-	 */
-	public function getCopyKey($id);
-
-	/**
-	 * Returns the Copy Value (text).
-	 * @param string $key
+	 * Returns the Copy Object By Key.
+	 * @param str $key
 	 * @return string
 	 */
 	public function getCopy($key);
 
 	
-	/**
-	 * Returns the Copy Lang .
-	 * for a given CopyId
-     * @param = $copyId
-	 * @return string
-	 */
-	public function getLang($copyId);
 
-    
     /**
      * Returns  object of 
-     * all pices of copy for a given 
-     * Language or returns all default copy
+     * all pices of copy 
      * @param string lang
      * @return lang object
      */
      public function getAllCopy();
+     
+     /**
+     * Returns  object of 
+     * all pices of copy 
+      * Prepared for file transfer (key:value)
+     * @param string lang
+     * @return lang object
+     */
+     public function getKeyValue();
      
 	/**
 	 * Save the copy elements

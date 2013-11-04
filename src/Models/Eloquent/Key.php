@@ -1,6 +1,4 @@
-<?php
-
-namespace Scaveit\Localizeit\Language\Eloquent;
+<?php namespace Scaveit\Localizeit\Models\Eloquent;
 
 /**
  * File Name: Copy.php
@@ -24,10 +22,10 @@ namespace Scaveit\Localizeit\Language\Eloquent;
  * @link       http://Scaveit.com   
  */
 use Illuminate\Database\Eloquent\Model;
-use Scaveit\Localizeit\Language\LangCopyInterface;
+use Scaveit\Localizeit\Models\LangKeyInterface;
 use DateTime;
 
-class Copy extends Model implements LangCopyInterface
+class Key extends Model implements LangKeyInterface
 {
 
     protected $softDelete = true;
@@ -37,7 +35,7 @@ class Copy extends Model implements LangCopyInterface
      *
      * @var string
      */
-    protected $table = 'localizeit_copy_default';
+    protected $table = 'copy_default';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -73,41 +71,28 @@ class Copy extends Model implements LangCopyInterface
 
     public function __construct()
     {
-        $this->setLang();
-        $this->table = 'localizeit_copy_'.$this->lang;
         parent::__construct();
     }
 
+   
+    
+    
     /**
-     * Setting the $this->lang var to set the correct tables
-     * @param type $lang
-     */
-    public function setLang($lang = null)
-    {
-       // TODO: Have this look at tables Exist 
-            
-        if($lang){
-            $this->lang = $lang;
-        }
-        $this->lang = 'default'; //substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    }
-
-    /**
-     * Returns the Copy ID.
-     *
-     * @return mixed
-     */
-    public function getId()
-    {
-        $this->id;
-    }
-
-    /**
-     * Returns the Copy Key.
+     * Returns the  Key Id.
      * @param var id
      * @return string
      */
-    public function getCopyKey($id)
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Returns the  Key by id.
+     * @param var id
+     * @return string
+     */
+    public function getLangKey($id)
     {
         return $this->find($id)->key;
     }
@@ -117,22 +102,12 @@ class Copy extends Model implements LangCopyInterface
      * @param string $key
      * @return string
      */
-    public function getCopy($key)
+    public function getDesc($key)
     {
-        return $this->where('key', '=', $key)->copy;
+        return $this->where('key', '=', $key)->desc;
     }
 
-    /**
-     * Returns the Copy Lang .
-     * for a given CopyId
-     * @param = $copyId
-     * @return string
-     */
-    public function getLang($copyId)
-    {
-        return $this->lang;
-    }
-
+    
     /**
      * Returns  object of 
      * all pices of copy for a given 
@@ -140,7 +115,7 @@ class Copy extends Model implements LangCopyInterface
      * @param string lang
      * @return lang object
      */
-    public function getAllCopy()
+    public function getAllKeys()
     {
         return $this->all();
     }
@@ -153,14 +128,16 @@ class Copy extends Model implements LangCopyInterface
      * @param string $copy
      * @return bool
      */
-    public function saveCopy($key, $copy)
+    public function saveLangKey($key, $copy)
     {
         if ($record = $this->where('key', '=', $key)->firstOrFail()) {
+            $record->lang = $lang;
             $record->copy = $copy;
             return $copy->save();
         } else {
             return $this->create([
                         'key' => $key,
+                        'lang' => $lang,
                         'copy' => $copy,
             ]);
         }
@@ -172,7 +149,7 @@ class Copy extends Model implements LangCopyInterface
      * @param int $copyID
      * @return bool
      */
-    public function deleteCopy($copyId){
+    public function deleteLangKey($keyId){
         $this->find($copyId)->delete();
     }
 
